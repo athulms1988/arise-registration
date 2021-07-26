@@ -1,7 +1,20 @@
 /* @extend display-flex; */
 display-flex, .signup-content, .form-row, .form-radio, .select-icon, .select-icon i {
   display: flex;
-  display: -webkit-flex; }
+  /* display: -webkit-flex;  */
+  flex-direction: row;
+  max-height: 80vh;
+}
+
+.main {
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateX(8%) translateY(-50%);
+    transform: translateX(8%) translateY(-50%);
+    width: 95%;
+    right: 10%;
+}
 
 /* @extend list-type-ulli; */
 list-type-ulli {
@@ -253,13 +266,17 @@ body {
   background: #2699fb;
   padding: 90px 0; }
 .container {
-  width: 1400px;
   position: relative;
   margin: 0 auto;
   background: #fff; }
 
 .signup-img, .signup-form {
   width: 50%; }
+
+.signup-form {
+  overflow-x: scroll;
+  padding: 30px 0;
+}
 .signup-img {
   margin: auto;
   padding: 20px 0;
@@ -277,10 +294,12 @@ body {
  }
 
 .register-form {
-  padding: 50px 100px 50px 70px; }
+  padding: 0 30px;
+}
 
 .form-row {
-  margin: 0 -15px; }
+  margin: 0 -15px; 
+}
   .form-row .form-group {
     width: 50%;
     padding: 0 15px; }
@@ -456,10 +475,24 @@ select {
     -webkit-flex-direction: column;
     -o-flex-direction: column;
     -ms-flex-direction: column; 
+    max-height: 100%;
   }
 
   .signup-img, .signup-form {
-    width: 100%; } }
+    width: 100%; } 
+  
+  .signup-form {
+    overflow-y: auto; 
+  }
+
+  .main {
+    position: relative;
+    top: 0;
+    right: 0;
+    transform: inherit;
+  }
+
+  }
 @media screen and (max-width: 768px) {
   .register-form {
     padding: 50px 40px 50px 40px; } }
