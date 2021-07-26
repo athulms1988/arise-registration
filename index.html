@@ -96,20 +96,16 @@
                                 <label for="city">Country<span style="color: #ff0000;">*</span> :</label>
                                 <div class="form-select">
                                     <select name="country" id="country">
-                                        <option value=""></option>
-                                        <option value="losangeles">Los Angeles</option>
-                                        <option value="washington">Washington</option>
+                                    
                                     </select>
                                     <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="state">State<span style="color: #ff0000;">*</span> :</label>
+                                <label for="state">State :</label>
                                 <div class="form-select">
-                                    <select name="state" id="state">
-                                        <option value=""></option>
-                                        <option value="us">America</option>
-                                        <option value="uk">English</option>
+                                    <select name="state" id="state" > 
+                                        
                                     </select>
                                     <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
                                 </div>
@@ -163,62 +159,74 @@ $(function() {
         url : "data/countries.json",
         type: "GET",
         success: function(data, textStatus, jqXHR)
-        {
-        },
-        error: function (jqXHR, textStatus, errorThrown)
-        {
- 
+        {   
+            window.country_data= data && data.countries ? data.countries : [];
+            var country_options = '<option value=""></option>';
+            window.country_data.map((country) => {
+                country_options = country_options + `<option value="${country.country}">${country.country}</option>`
+            })
+            $('#country').html(country_options);
         }
+    });
 
-      });
+    $('#country').on('change', function() {
+        $('#state').html('');
+        var filtered_country = window.country_data.filter((country) => country.country === this.value)
+        var state_options = '';
+        if(filtered_country.length > 0) {
+            filtered_country[0].states.map((state) => {
+                state_options = state_options + `<option value="${state}">${state}</option>`
+                
 
-  $("form[name='registration']").validate({
-    rules: {
-      first_name: "required",
-      last_name: "required",
-      phone_number: "required",
-      govt_id:"required",
-      fathers_name:"required",
-      address:"required",
-      country:"required",
-      state:"required",
-      country_name:"required",
-      university:"required",
-      acadamic_year:"required",
-      about_arise:"required",
-      pincode:"required",
-      email: {
-        required: true,
-        email: true
-             },
-    },
-    messages: {
-        first_name: "Please enter your firstname",
-        last_name: "Please enter your lastname",
-        phone_number:"Please enter your phone number",
-        govt_id:"Please enter a valid ID",
-        fathers_name:"Please enter the name",
-        father_phone_number:"Please enter the phone number",
-        address:"Please enter the address",
-        email: "Please enter a valid email address",
-        country:"Please enter the country name",
-        state:"Please enter the state",
-        country_name:"Please enter the country you are studied",
-        university:"Please enter the university",
-        acadamic_year:"Please enter the acadamic year",
-        about_arise:"Please enter this field",
-        pincode:"please enter the pincod"
-    },
-    
-    submitHandler: function(form) {
-      //API call for registration
-     
+            })
+            $('#state').html(state_options);
+            
+        }
+    });
 
-
-    }
-  });
+    $("form[name='registration']").validate({
+        rules: {
+            first_name: "required",
+            last_name: "required",
+            phone_number: "required",
+            govt_id:"required",
+            fathers_name:"required",
+            father_phone_number:"required",
+            address:"required",
+            country:"required",
+            country_name:"required",
+            university:"required",
+            acadamic_year:"required",
+            about_arise:"required",
+            pincode:"required",
+            email: {
+                required: true,
+                email: true
+            },
+        },
+        messages: {
+            first_name: "Please enter your firstname",
+            last_name: "Please enter your lastname",
+            phone_number:"Please enter your phone number",
+            govt_id:"Please enter a valid ID",
+            fathers_name:"Please enter the name",
+            father_phone_number:"Please enter the phone number",
+            address:"Please enter the address",
+            email: "Please enter a valid email address",
+            country:"Please enter the country name",
+            country_name:"Please enter the country you are studied",
+            university:"Please enter the university",
+            acadamic_year:"Please enter the acadamic year",
+            about_arise:"Please enter this field",
+            pincode:"please enter the pincode"
+        },
+        submitHandler: function(form) {
+        //API call for registration
+        
+        }
+    });
 });
-    </script>
+</script>
 
     
 </body>
