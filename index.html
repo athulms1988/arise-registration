@@ -14,6 +14,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 </head>
 <body>
+
+    <style>
+        form .error {
+        color: #ff0000;
+        font-size: 12px;
+        font-weight: normal;
+        }
+    </style>
     <div class="main">
         <div class="container">
             <div class="signup-content">
@@ -23,86 +31,69 @@
                     <h3 class="logo-sub-title">Student Registration</h3>
                 </div>
                 <div class="signup-form">
-                    <form id="register-form" class="register-form needs-validation" novalidate>
+                    <form id="register-form" class="register-form" name="registration">
                         <h2>General Information</h2>
                         <hr color="#2699fb"/>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="first_name" class="form-label">First Name :</label>
-                                <input type="text"  class="form-control"  name="first_name" id="first_name" required/>
-                                <div class="invalid-feedback">
-                                    Please fill this field.
-                                </div>
+                                <label for="first_name" class="form-label">First Name<span style="color: #ff0000;">*</span> : </label>
+                               
+                                <input type="text"  class="form-control"  name="first_name" id="first_name" />
                             </div>
                             <div class="form-group">
-                                <label for="last_name" class="form-label">Last Name :</label>
-                                <input type="text"  class="form-control" name="last_name" id="last_name" required/>
-                                <div class="invalid-feedback">
-                                    Please fill this field.
-                                </div>
+                                <label for="last_name" class="form-label">Last Name<span style="color: #ff0000;">*</span> :</label>
+                                <input type="text"  class="form-control" name="last_name" id="last_name"/>
                             </div>
                         </div>
                         <div class="form-radio">
-                            <label for="gender" class="radio-label">Gender :</label>
+                            <label for="gender" class="radio-label">Gender<span style="color: #ff0000;">*</span> :</label>
                             <div class="form-radio-item">
-                                <input type="radio" class="form-check-input name="gender" id="male" checked>
+                                <input type="radio" class="form-check-input" name="gender" id="male" checked>
                                 <label for="male">Male</label>
                                 <span class="check"></span>
                             </div>
                             <div class="form-radio-item">
-                                <input type="radio" class="form-check-input name="gender" id="female">
+                                <input type="radio" class="form-check-input" name="gender" id="female">
                                 <label for="female">Female</label>
                                 <span class="check"></span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email ID :</label>
+                            <label for="email">Email<span style="color: #ff0000;">*</span> :</label>
                             <input type="email" class="form-control" name="email" id="email" />
-                            <div class="invalid-feedback">
-                                Please enter a valid email
-                            </div>
+                            
                         </div>
                         <div class="form-group">
-                            <label for="phone_number">Phone Number :</label>
-                            <input type="number" class="form-control" name="phone_number" id="phone_number"  required/>
-                            <div class="invalid-feedback">
-                                Please enter a valid phone number
-                            </div>
+                            <label for="phone_number">Phone Number<span style="color: #ff0000;">*</span> :</label>
+                            <input type="number" class="form-control" name="phone_number" id="phone_number"/>
+                            
                         </div>
                         <div class="form-group">
-                            <label for="govt_id">Govt ID :</label>
-                            <input type="text" class="form-control" name="govt_id" id="govt_id" required/>
-                            <div class="invalid-feedback">
-                                Please enter a valid ID
-                            </div>
+                            <label for="govt_id">Govt ID<span style="color: #ff0000;">*</span> :</label>
+                            <input type="text" class="form-control" name="govt_id" id="govt_id"/>
+                           
                         </div>
                         <h2>Contact Information</h2>
                         <hr color="#2699fb"/>
                         <div class="form-group">
-                            <label for="fathers_name">Parent's Name :</label>
-                            <input type="text" class="form-control" name="fathers_name" id="fathers_name" required/>
-                            <div class="invalid-feedback">
-                                Please enter this field
-                            </div>
+                            <label for="fathers_name">Parent's Name<span style="color: #ff0000;">*</span> :</label>
+                            <input type="text" class="form-control" name="fathers_name" id="fathers_name"/>
+                            
                         </div>
                         <div class="form-group">
-                            <label for="father_phone_number">Parent's Phone Number :</label>
-                            <input type="number" class="form-control" name="father_phone_number" id="father_phone_number" required/>
-                            <div class="invalid-feedback">
-                                Please enter this field
-                            </div>
+                            <label for="father_phone_number">Parent's Phone Number<span style="color: #ff0000;">*</span> :</label>
+                            <input type="number" class="form-control" name="father_phone_number" id="father_phone_number"/>
+                           
                         </div>
                         <div class="form-group">
-                            <label for="address">Address :</label>
-                            <input type="text" class="form-control" name="address" id="address" required/>
-                            <div class="invalid-feedback">
-                                Please enter this field
-                            </div>
+                            <label for="address">Address<span style="color: #ff0000;">*</span> :</label>
+                            <input type="text" class="form-control" name="address" id="address"/>
+                            
                         </div>
                         
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="city">Country :</label>
+                                <label for="city">Country<span style="color: #ff0000;">*</span> :</label>
                                 <div class="form-select">
                                     <select name="country" id="country">
                                         <option value=""></option>
@@ -113,7 +104,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="state">State :</label>
+                                <label for="state">State<span style="color: #ff0000;">*</span> :</label>
                                 <div class="form-select">
                                     <select name="state" id="state">
                                         <option value=""></option>
@@ -126,41 +117,31 @@
                             
                         </div>
                         <div class="form-group">
-                            <label for="pincode">Pincode :</label>
+                            <label for="pincode">Pincode<span style="color: #ff0000;">*</span> :</label>
                             <input type="number" class="form-control" name="pincode" id="pincode">
-                            <div class="invalid-feedback">
-                                Please enter this field
-                            </div>
+                            
                         </div>
                         <h2>Acadamic Information</h2>
                         <hr color="#2699fb"/>
                         <div class="form-group">
-                            <label for="country_name">Country studying / Graduated :</label>
-                            <input type="text" class="form-control" name="country_name" id="country_name" required/>
-                            <div class="invalid-feedback">
-                                Please enter this field
-                            </div>
+                            <label for="country_name">Country studying / Graduated<span style="color: #ff0000;">*</span> :</label>
+                            <input type="text" class="form-control" name="country_name" id="country_name"/>
+                           
                         </div>
                         <div class="form-group">
-                            <label for="university">University :</label>
-                            <input type="text" name="university" class="form-control" id="university" required/>
-                            <div class="invalid-feedback">
-                                Please enter this field
-                            </div>
+                            <label for="university">University<span style="color: #ff0000;">*</span> :</label>
+                            <input type="text" name="university" class="form-control" id="university"/>
+                            
                         </div>
                         <div class="form-group">
-                            <label for="acadamic_year">Acadamic Year :</label>
-                            <input type="number" class="form-control" name="acadamic_year" id="acadamic_year" required/>
-                            <div class="invalid-feedback">
-                                Please enter this field
-                            </div>
+                            <label for="acadamic_year">Acadamic Year<span style="color: #ff0000;">*</span> :</label>
+                            <input type="number" class="form-control" name="acadamic_year" id="acadamic_year"/>
+                            
                         </div>
                         <div class="form-group">
-                            <label for="aboutArise">How did you hear about Arise ? :</label>
-                            <input type="number" class="form-control" name="aboutArise" id="aboutArise" required/>
-                            <div class="invalid-feedback">
-                                Please enter this field
-                            </div>
+                            <label for="aboutArise">How did you hear about Arise ?<span style="color: #ff0000;">*</span> :</label>
+                            <input type="number" class="form-control" name="about_arise" id="about_arise"/>
+                           
                         </div>
                         <div class="form-submit">
                             <input type="submit" value="Reset All" class="submit" name="reset" id="reset" />
@@ -174,7 +155,71 @@
     </div>
 
     <!-- JS -->
-    <script src="vendor/jquery/jquery.min.js"></script>
     <script src="js/main.js"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+    <script>
+       
+$(function() {
+    $.ajax({
+        url : "data/countries.json",
+        type: "GET",
+        success: function(data, textStatus, jqXHR)
+        {
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+ 
+        }
+
+      });
+
+  $("form[name='registration']").validate({
+    rules: {
+      first_name: "required",
+      last_name: "required",
+      phone_number: "required",
+      govt_id:"required",
+      fathers_name:"required",
+      address:"required",
+      country:"required",
+      state:"required",
+      country_name:"required",
+      university:"required",
+      acadamic_year:"required",
+      about_arise:"required",
+      pincode:"required",
+      email: {
+        required: true,
+        email: true
+             },
+    },
+    messages: {
+        first_name: "Please enter your firstname",
+        last_name: "Please enter your lastname",
+        phone_number:"Please enter your phone number",
+        govt_id:"Please enter a valid ID",
+        fathers_name:"Please enter the name",
+        father_phone_number:"Please enter the phone number",
+        address:"Please enter the address",
+        email: "Please enter a valid email address",
+        country:"Please enter the country name",
+        state:"Please enter the state",
+        country_name:"Please enter the country you are studied",
+        university:"Please enter the university",
+        acadamic_year:"Please enter the acadamic year",
+        about_arise:"Please enter this field",
+        pincode:"please enter the pincod"
+    },
+    
+    submitHandler: function(form) {
+      //API call for registration
+     
+
+
+    }
+  });
+});
+    </script>
+
+    
+</body>
 </html>
