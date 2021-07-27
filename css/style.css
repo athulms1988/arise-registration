@@ -269,6 +269,16 @@ body {
   -o-background-size: cover;
   background-size: cover;
   padding: 90px 0; }
+@media screen and (max-width: 480px) {
+  body {
+    margin: 0;
+    padding: 0
+  }
+
+  .container, .main {
+    width: 100% !important;
+  }
+}
 .container {
   position: relative;
   margin: 0 auto;
