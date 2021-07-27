@@ -73,6 +73,12 @@
                             <input type="text" class="form-control" name="govt_id" id="govt_id"/>
                            
                         </div>
+                        <div class="form-group">
+                            <label for="govt_id">Upload photo<span style="color: #ff0000;">*</span> :</label>
+                            <img style="max-width:50%" id="displayImage" src="#" alt="your image" />
+                            <input  type='file' id="imageInput" />
+                        </div>
+
                         <h2>Contact Information</h2>
                         <hr color="#2699fb"/>
                         <div class="form-group">
@@ -134,11 +140,55 @@
                             <input type="number" class="form-control" name="acadamic_year" id="acadamic_year"/>
                             
                         </div>
+                        
+                        <h2>Registration</h2>
+                        <hr color="#2699fb"/>
+                        <label for="course">Register for a course<span style="color: #ff0000;">*</span> :</label>
+                        <div class="form-select">
+                            <select name="course" id="course">
+                                <option></option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                            <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                        </div><br>
+
+                        <div class="form-radio">
+                            <label for="gender" class="radio-label">Paid registration form<span style="color: #ff0000;">*</span> :</label>
+                            <div class="form-radio-item">
+                                <input type="radio" class="form-check-input" name="fee" id="feepaid" >
+                                <label for="feepaid">Yes</label>
+                                <span class="check"></span>
+                            </div>
+                            <div class="form-radio-item">
+                                <input type="radio" class="form-check-input" name="fee" id="feenotpaid" checked >
+                                <label for="feenotpaid">No</label>
+                                <span class="check"></span>
+                            </div>
+                        </div> 
+                        <div class="form-group" id="uploadReceipt">
+                            <label for="govt_id">Upload receipt<span style="color: #ff0000;">*</span> :</label>
+                            <!-- <img style="max-width:50%" id="displayImage" src="#" alt="your image" /> -->
+                            <input  type='file' id="imageReceipt" />
+                        </div>
+
+
                         <div class="form-group">
                             <label for="aboutArise">How did you hear about Arise ?<span style="color: #ff0000;">*</span> :</label>
-                            <input type="number" class="form-control" name="about_arise" id="about_arise"/>
+                            <div class="form-select">
+                                <select name="about_arise" id="about_arise">
+                                    <option></option>
+                                    <option>Friends</option>
+                                    <option>Family</option>
+                                    <option>Internet</option>
+                                </select>
+                                <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                            </div>
                            
                         </div>
+
+
                         <div class="form-submit">
                             <input type="submit" value="Reset All" class="submit" name="reset" id="reset" />
                             <input type="submit" value="Submit Form" class="submit" name="submit" id="submit" />
@@ -155,6 +205,8 @@
     <script>
        
 $(function() {
+    $("#uploadReceipt").hide();
+    $("#displayImage").hide();
     $.ajax({
         url : "data/countries.json",
         type: "GET",
@@ -184,6 +236,24 @@ $(function() {
         }
     });
 
+    $('#imageInput').on('change', function(evt) {
+        const [file] = imageInput.files
+        if (file) {
+            displayImage.src = URL.createObjectURL(file)
+            $("#displayImage").show();
+        }
+    });
+    $('#feepaid').on('change', function(evt) {
+        $("#uploadReceipt").show();
+        
+    });
+    $('#feenotpaid').on('change', function(evt) {
+        $("#uploadReceipt").hide();
+        
+    });
+
+
+
     $("form[name='registration']").validate({
         rules: {
             first_name: "required",
@@ -199,6 +269,7 @@ $(function() {
             acadamic_year:"required",
             about_arise:"required",
             pincode:"required",
+            course:"required",
             email: {
                 required: true,
                 email: true
@@ -218,7 +289,8 @@ $(function() {
             university:"Please enter the university",
             acadamic_year:"Please enter the acadamic year",
             about_arise:"Please enter this field",
-            pincode:"Please enter the pincode"
+            pincode:"Please enter the pincode",
+            course:"Please enter a course",
         },
         submitHandler: function(form) {
         //API call for registration
