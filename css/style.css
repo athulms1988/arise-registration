@@ -465,6 +465,18 @@ select {
   #submit:hover {
     background-color: #2699fb; }
 
+    @media screen and (max-width: 480px) {
+      .logo-img {
+        width: 150px;
+      }
+      .logo-title {
+        font-size: 20px;
+      }
+      .logo-sub-title {
+        font-size: 14px;
+      }
+    }
+
 @media screen and (max-width: 992px) {
   .container {
     width: 100%;
@@ -494,9 +506,6 @@ select {
   }
 
   }
-@media screen and (max-width: 768px) {
-  .register-form {
-    padding: 50px 40px 50px 40px; } }
 @media screen and (max-width: 575px) {
   .form-row {
     flex-direction: column;
